@@ -6,11 +6,14 @@
 //  Copyright © 2017 Treehouse. All rights reserved.
 //
 
+import GameKit
 
 let questionsPerRound = 4
 var questionsAsked = 0
 var correctQuestions = 0
 var indexOfSelectedQuestion: Int = 0
+var indexOfQuestionAnswers: Int = 0
+
 
 class TriviaQuestion {
     let question: String
@@ -18,6 +21,8 @@ class TriviaQuestion {
     let wrongAnswer1: String
     let wrongAnswer2: String
     var wrongAnswer3: String? = nil
+    let answerChoices: [String?]
+    
     
     init(question: String, answer: String, wrongAnswer1: String, wrongAnswer2: String, wrongAnswer3: String?){
         self.question = question
@@ -25,7 +30,13 @@ class TriviaQuestion {
         self.wrongAnswer1 = wrongAnswer1
         self.wrongAnswer2 = wrongAnswer2
         self.wrongAnswer3 = wrongAnswer3
+        
+         answerChoices = [
+            answer, wrongAnswer1, wrongAnswer2, wrongAnswer3
+        ]
     }
+    
+  
     
 }
 
@@ -48,6 +59,60 @@ let trivia: [TriviaQuestion] = [
     question4,
     question5
 ]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+func randomizeAnswerChoicesIndex(for question: TriviaQuestion) -> [Int] {
+    var answerChoiceIndex = [Int]()
+    var counter = 0
+    while counter < question.answerChoices.count{
+        let indexOfQuestionAnswers = GKRandomSource.sharedRandom().nextInt(upperBound: question.answerChoices.count)
+        if answerChoiceIndex.contains(indexOfQuestionAnswers) {
+            continue
+        } else {
+            answerChoiceIndex.append(indexOfQuestionAnswers)
+            counter += 1
+        }
+    }
+    
+    return answerChoiceIndex
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

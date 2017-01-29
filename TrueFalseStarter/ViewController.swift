@@ -24,6 +24,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var playAgainButton: UIButton!
     
 
+    let questionDictionary = trivia[indexOfSelectedQuestion]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         loadGameStartSound()
@@ -41,8 +43,18 @@ class ViewController: UIViewController {
         indexOfSelectedQuestion = GKRandomSource.sharedRandom().nextInt(upperBound: trivia.count)
         let questionDictionary = trivia[indexOfSelectedQuestion]
         questionField.text = questionDictionary.question
+        
+        let randomChoices = randomizeAnswerChoicesIndex(for: questionDictionary)
+
+        aButton.setTitle(questionDictionary.answerChoices[randomChoices[0]], for: .normal)
+        bButton.setTitle(questionDictionary.answerChoices[randomChoices[1]], for: .normal)
+        cButton.setTitle(questionDictionary.answerChoices[randomChoices[2]], for: .normal)
+        dButton.setTitle(questionDictionary.answerChoices[randomChoices[3]], for: .normal)
         playAgainButton.isHidden = true
-    }
+        
+}
+    
+
     
     func displayScore() {
         // Hide the answer buttons
