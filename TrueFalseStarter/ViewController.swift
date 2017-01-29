@@ -40,26 +40,39 @@ class ViewController: UIViewController {
     }
     
     func displayQuestion() {
-        indexOfSelectedQuestion = GKRandomSource.sharedRandom().nextInt(upperBound: trivia.count)
+        
+        
+        indexOfSelectedQuestion = order[nextQuestion]
         let questionDictionary = trivia[indexOfSelectedQuestion]
+        print(order)
+        print(indexOfSelectedQuestion)
+        
         questionField.text = questionDictionary.question
         
-        let randomChoices = randomizeAnswerChoicesIndex(for: questionDictionary)
+        let randomChoices = randomizeAnswerChoices(for: questionDictionary)
 
         aButton.setTitle(questionDictionary.answerChoices[randomChoices[0]], for: .normal)
         bButton.setTitle(questionDictionary.answerChoices[randomChoices[1]], for: .normal)
         cButton.setTitle(questionDictionary.answerChoices[randomChoices[2]], for: .normal)
         dButton.setTitle(questionDictionary.answerChoices[randomChoices[3]], for: .normal)
+        
         playAgainButton.isHidden = true
         
-}
+        nextQuestion += 1
+    }
     
-
+/*
+     call the randomQuestion generator
+     generator creates an array of integers that will be used as the indexs to refer to the questions in 'trivia'
+     have questionDictionary hold the question
+ */
     
     func displayScore() {
         // Hide the answer buttons
         aButton.isHidden = true
         bButton.isHidden = true
+        cButton.isHidden = true
+        dButton.isHidden = true
         
         // Display play again button
         playAgainButton.isHidden = false
@@ -99,9 +112,14 @@ class ViewController: UIViewController {
         // Show the answer buttons
         aButton.isHidden = false
         bButton.isHidden = false
+        cButton.isHidden = false
+        dButton.isHidden = false
+        
         
         questionsAsked = 0
         correctQuestions = 0
+        nextQuestion = 0
+        order = randomizeQuestionOrder(in: trivia)
         nextRound()
     }
     

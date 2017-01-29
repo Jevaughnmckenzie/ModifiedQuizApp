@@ -8,11 +8,13 @@
 
 import GameKit
 
-let questionsPerRound = 4
+let questionsPerRound = trivia.count
 var questionsAsked = 0
 var correctQuestions = 0
 var indexOfSelectedQuestion: Int = 0
 var indexOfQuestionAnswers: Int = 0
+var nextQuestion = 0
+
 
 
 class TriviaQuestion {
@@ -35,10 +37,9 @@ class TriviaQuestion {
             answer, wrongAnswer1, wrongAnswer2, wrongAnswer3
         ]
     }
-    
-  
-    
 }
+
+
 
 let question1 = TriviaQuestion(question: "Who was Marcus Garvey?", answer: "A renowned Black Nationalist", wrongAnswer1: "A blacksmith", wrongAnswer2: "A gospel singer", wrongAnswer3: "A painter")
 
@@ -60,26 +61,13 @@ let trivia: [TriviaQuestion] = [
     question5
 ]
 
+// sets the question order for the given round
+var order = randomizeQuestionOrder(in: trivia)
 
 
+// Randomizes the order that a answer choice might be shown
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-func randomizeAnswerChoicesIndex(for question: TriviaQuestion) -> [Int] {
+func randomizeAnswerChoices(for question: TriviaQuestion) -> [Int] {
     var answerChoiceIndex = [Int]()
     var counter = 0
     while counter < question.answerChoices.count{
@@ -94,6 +82,36 @@ func randomizeAnswerChoicesIndex(for question: TriviaQuestion) -> [Int] {
     
     return answerChoiceIndex
 }
+
+// Randomizes the order questions are shown for a given round
+// and prevents repetitions
+func randomizeQuestionOrder(in round: [TriviaQuestion]) -> [Int] {
+    var questionOrder = [Int]()
+    var counter = 0
+    while counter < round.count{
+        let indexOfQuestion = GKRandomSource.sharedRandom().nextInt(upperBound: round.count)
+        if questionOrder.contains(indexOfQuestion) {
+            continue
+        } else {
+            questionOrder.append(indexOfQuestion)
+            counter += 1
+        }
+    }
+    
+    return questionOrder
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
