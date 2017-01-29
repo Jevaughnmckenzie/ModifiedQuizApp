@@ -12,23 +12,15 @@ import AudioToolbox
 
 class ViewController: UIViewController {
     
-    let questionsPerRound = 4
-    var questionsAsked = 0
-    var correctQuestions = 0
-    var indexOfSelectedQuestion: Int = 0
-    
+        
     var gameSound: SystemSoundID = 0
     
-    let trivia: [[String : String]] = [
-        ["Question": "Only female koalas can whistle", "Answer": "False"],
-        ["Question": "Blue whales are technically whales", "Answer": "True"],
-        ["Question": "Camels are cannibalistic", "Answer": "False"],
-        ["Question": "All ducks are birds", "Answer": "True"]
-    ]
-    
+       
     @IBOutlet weak var questionField: UILabel!
-    @IBOutlet weak var trueButton: UIButton!
-    @IBOutlet weak var falseButton: UIButton!
+    @IBOutlet weak var aButton: UIButton!
+    @IBOutlet weak var bButton: UIButton!
+    @IBOutlet weak var cButton: UIButton!
+    @IBOutlet weak var dButton: UIButton!
     @IBOutlet weak var playAgainButton: UIButton!
     
 
@@ -48,14 +40,14 @@ class ViewController: UIViewController {
     func displayQuestion() {
         indexOfSelectedQuestion = GKRandomSource.sharedRandom().nextInt(upperBound: trivia.count)
         let questionDictionary = trivia[indexOfSelectedQuestion]
-        questionField.text = questionDictionary["Question"]
+        questionField.text = questionDictionary.question
         playAgainButton.isHidden = true
     }
     
     func displayScore() {
         // Hide the answer buttons
-        trueButton.isHidden = true
-        falseButton.isHidden = true
+        aButton.isHidden = true
+        bButton.isHidden = true
         
         // Display play again button
         playAgainButton.isHidden = false
@@ -69,9 +61,9 @@ class ViewController: UIViewController {
         questionsAsked += 1
         
         let selectedQuestionDict = trivia[indexOfSelectedQuestion]
-        let correctAnswer = selectedQuestionDict["Answer"]
+        let correctAnswer = selectedQuestionDict.answer
         
-        if (sender === trueButton &&  correctAnswer == "True") || (sender === falseButton && correctAnswer == "False") {
+        if (sender === aButton &&  correctAnswer == "True") || (sender === bButton && correctAnswer == "False") {
             correctQuestions += 1
             questionField.text = "Correct!"
         } else {
@@ -93,8 +85,8 @@ class ViewController: UIViewController {
     
     @IBAction func playAgain() {
         // Show the answer buttons
-        trueButton.isHidden = false
-        falseButton.isHidden = false
+        aButton.isHidden = false
+        bButton.isHidden = false
         
         questionsAsked = 0
         correctQuestions = 0
