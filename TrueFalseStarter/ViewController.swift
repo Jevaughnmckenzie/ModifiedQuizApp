@@ -44,6 +44,7 @@ class ViewController: UIViewController {
         
         indexOfSelectedQuestion = order[nextQuestion]
         let questionDictionary = trivia[indexOfSelectedQuestion]
+        //Checks to make sure that the question order is random, and that no question repeats
         print(order)
         print(indexOfSelectedQuestion)
         
@@ -61,11 +62,6 @@ class ViewController: UIViewController {
         nextQuestion += 1
     }
     
-/*
-     call the randomQuestion generator
-     generator creates an array of integers that will be used as the indexs to refer to the questions in 'trivia'
-     have questionDictionary hold the question
- */
     
     func displayScore() {
         // Hide the answer buttons
@@ -88,7 +84,7 @@ class ViewController: UIViewController {
         let selectedQuestionDict = trivia[indexOfSelectedQuestion]
         let correctAnswer = selectedQuestionDict.answer
         
-        if (sender === aButton &&  correctAnswer == "True") || (sender === bButton && correctAnswer == "False") {
+        if (sender.currentTitle == correctAnswer) {
             correctQuestions += 1
             questionField.text = "Correct!"
         } else {
@@ -97,6 +93,11 @@ class ViewController: UIViewController {
         
         loadNextRoundWithDelay(seconds: 2)
     }
+    
+    /*
+     'correctAnswer' holds the string value of the answer to the question
+     check to see if the sender has a title that matches the answer
+     */
     
     func nextRound() {
         if questionsAsked == questionsPerRound {
