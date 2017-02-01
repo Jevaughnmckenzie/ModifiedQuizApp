@@ -24,7 +24,9 @@ class ViewController: UIViewController {
     @IBOutlet weak var playAgainButton: UIButton!
     @IBOutlet weak var buttons: UIStackView!
  
-    
+    var answerButtons = [UIButton]()
+
+
 
     let questionDictionary = trivia[indexOfSelectedQuestion]
     
@@ -34,6 +36,7 @@ class ViewController: UIViewController {
         // Start game
         playGameStartSound()
         displayQuestion()
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -59,11 +62,24 @@ class ViewController: UIViewController {
         cButton.setTitle(questionDictionary.answerChoices[randomChoices[2]], for: .normal)
         dButton.setTitle(questionDictionary.answerChoices[randomChoices[3]], for: .normal)
         
+        answerButtons = [
+            aButton, bButton, cButton, dButton
+        ]
+        hideEmptyButton()
         playAgainButton.isHidden = true
         
         nextQuestion += 1
     }
     
+    func hideEmptyButton() {
+        for button in answerButtons {
+            if button.currentTitle == nil {
+                button.isHidden = true
+            } else {
+                button.isHidden = false
+            }
+        }
+    }
     
     func displayScore() {
         // Hide the answer buttons
