@@ -22,6 +22,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var cButton: UIButton!
     @IBOutlet weak var dButton: UIButton!
     @IBOutlet weak var playAgainButton: UIButton!
+    @IBOutlet weak var buttons: UIStackView!
+ 
     
 
     let questionDictionary = trivia[indexOfSelectedQuestion]
