@@ -22,6 +22,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var cButton: UIButton!
     @IBOutlet weak var dButton: UIButton!
     @IBOutlet weak var playAgainButton: UIButton!
+    @IBOutlet weak var answerResult: UILabel!
     @IBOutlet weak var buttons: UIStackView!
  
     var answerButtons = [UIButton]()
@@ -45,7 +46,7 @@ class ViewController: UIViewController {
     }
     
     func displayQuestion() {
-        
+        answerResult.isHidden = true
         
         indexOfSelectedQuestion = order[nextQuestion]
         let questionDictionary = trivia[indexOfSelectedQuestion]
@@ -74,7 +75,9 @@ class ViewController: UIViewController {
     func hideEmptyButton() {
         for button in answerButtons {
             if button.currentTitle == nil {
-                button.isHidden = true
+                if let indexOfBlankButton = answerButtons.index(of: button) {
+                 buttons.arrangedSubviews[indexOfBlankButton].isHidden = true
+                }
             } else {
                 button.isHidden = false
             }
@@ -99,14 +102,16 @@ class ViewController: UIViewController {
         // Increment the questions asked counter
         questionsAsked += 1
         
+        answerResult.isHidden = false
+        
         let selectedQuestionDict = trivia[indexOfSelectedQuestion]
         let correctAnswer = selectedQuestionDict.answer
         
         if (sender.currentTitle == correctAnswer) {
             correctQuestions += 1
-            questionField.text = "Correct!"
+            answerResult.text = "Correct!"
         } else {
-            questionField.text = "Sorry, wrong answer!"
+            answerResult.text = "Sorry, wrong answer!"
         }
         
         loadNextRoundWithDelay(seconds: 2)
@@ -120,6 +125,7 @@ class ViewController: UIViewController {
     func nextRound() {
         if questionsAsked == questionsPerRound {
             // Game is over
+            answerResult.isHidden = true 
             displayScore()
         } else {
             // Continue game
@@ -133,7 +139,6 @@ class ViewController: UIViewController {
         bButton.isHidden = false
         cButton.isHidden = false
         dButton.isHidden = false
-        
         
         questionsAsked = 0
         correctQuestions = 0
