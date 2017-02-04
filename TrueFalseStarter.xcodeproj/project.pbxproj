@@ -15,6 +15,7 @@
 		97093D531C932116001275BC /* GameSound.wav in Resources */ = {isa = PBXBuildFile; fileRef = 97093D521C932116001275BC /* GameSound.wav */; };
 		A89969681E419F430080E888 /* Quiz.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89969671E419F430080E888 /* Quiz.swift */; };
 		A899696A1E4438A60080E888 /* Design.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89969691E4438A60080E888 /* Design.swift */; };
+		A89ED9781E467C1B00A4F606 /* LightningModeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89ED9771E467C1B00A4F606 /* LightningModeViewController.swift */; };
 		A8CA2FCB1E3D617A00F5057D /* Questions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8CA2FCA1E3D617A00F5057D /* Questions.swift */; };
 /* End PBXBuildFile section */
 
@@ -29,6 +30,7 @@
 		97093D521C932116001275BC /* GameSound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = GameSound.wav; sourceTree = "<group>"; };
 		A89969671E419F430080E888 /* Quiz.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Quiz.swift; sourceTree = "<group>"; };
 		A89969691E4438A60080E888 /* Design.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Design.swift; sourceTree = "<group>"; };
+		A89ED9771E467C1B00A4F606 /* LightningModeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LightningModeViewController.swift; sourceTree = "<group>"; };
 		A8CA2FCA1E3D617A00F5057D /* Questions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Questions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -64,6 +66,7 @@
 			children = (
 				97093D3B1C913506001275BC /* AppDelegate.swift */,
 				97093D3D1C913506001275BC /* ViewController.swift */,
+				A89ED9771E467C1B00A4F606 /* LightningModeViewController.swift */,
 				A89969691E4438A60080E888 /* Design.swift */,
 				A8CA2FCA1E3D617A00F5057D /* Questions.swift */,
 				97093D3F1C913506001275BC /* Main.storyboard */,
@@ -149,6 +152,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A89ED9781E467C1B00A4F606 /* LightningModeViewController.swift in Sources */,
 				A8CA2FCB1E3D617A00F5057D /* Questions.swift in Sources */,
 				97093D3E1C913506001275BC /* ViewController.swift in Sources */,
 				A89969681E419F430080E888 /* Quiz.swift in Sources */,

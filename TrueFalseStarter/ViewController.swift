@@ -158,20 +158,9 @@ class ViewController: UIViewController {
         
         buttonsAfterSelected()
         
-        
-//        for button in answerButtons {
-//            button.backgroundColor = UIColor.
-//    
-//        }
-        
         loadNextRoundWithDelay(seconds: 2)
     }
     
-    // disables buttons when one is selected
-//    func disableButtons() {
-//        for button in answerButtons{
-//        }
-//    }
     
     func nextRound() {
         if questionsAsked == questionsPerRound {
@@ -225,20 +214,7 @@ class ViewController: UIViewController {
         AudioServicesPlaySystemSound(gameSound)
     }
     
-    }
-
-
-
-
-
-/*
- Button Design:
- 
-    rounded corners
-    .normal state = regular
-    .disabled
- 
- */
+}
 
 
 
