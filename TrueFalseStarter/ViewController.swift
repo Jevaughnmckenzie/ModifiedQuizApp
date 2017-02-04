@@ -26,6 +26,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var buttons: UIStackView!
  
     var answerButtons = [UIButton]()
+    var correctAnswer: String = ""
 
 
 
@@ -34,16 +35,19 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         loadGameStartSound()
+        
         // Start game
         playGameStartSound()
         displayQuestion()
-        
+        dopeButtons()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    
     
     func displayQuestion() {
         answerResult.isHidden = true
@@ -66,11 +70,48 @@ class ViewController: UIViewController {
         answerButtons = [
             aButton, bButton, cButton, dButton
         ]
+        
         hideEmptyButton()
         playAgainButton.isHidden = true
-        
+        buttonsBeforeSelection()
         nextQuestion += 1
     }
+    
+    func dopeButtons() {
+        for button in answerButtons {
+            button.layer.cornerRadius = 10
+        }
+    }
+    
+    func buttonsBeforeSelection() {
+        for button in answerButtons {
+            button.backgroundColor = UIColor(red: 0/255, green: 153/255, blue: 0/255, alpha: 1)
+            button.setTitleColor(UIColor.yellow, for: .normal)
+            button.isEnabled = true
+        }
+    }
+    
+    func buttonsAfterSelected () {
+        for button in answerButtons {
+            button.backgroundColor = UIColor(red: 0/255, green: 102/255, blue: 0/255, alpha: 1)
+            button.isEnabled = false
+            if button.currentTitle == correctAnswer {
+                button.setTitleColor(UIColor(red: 255/255, green: 255/255, blue: 0/255, alpha: 1) , for: .normal)
+            } else {
+                button.setTitleColor(UIColor(red: 153/255, green: 153/255, blue: 0/255, alpha: 1), for: .normal)
+            }
+        }
+        
+    }
+    
+    func correctButton() {
+        for button in answerButtons {
+            if button.currentTitle == correctAnswer {
+                button.setTitleColor(UIColor.white, for: .normal)
+            }
+        }
+    }
+
     
     func hideEmptyButton() {
         for button in answerButtons {
@@ -83,6 +124,7 @@ class ViewController: UIViewController {
             }
         }
     }
+    
     
     func displayScore() {
         // Hide the answer buttons
@@ -105,7 +147,7 @@ class ViewController: UIViewController {
         answerResult.isHidden = false
         
         let selectedQuestionDict = trivia[indexOfSelectedQuestion]
-        let correctAnswer = selectedQuestionDict.answer
+        correctAnswer = selectedQuestionDict.answer
         
         if (sender.currentTitle == correctAnswer) {
             correctQuestions += 1
@@ -114,13 +156,22 @@ class ViewController: UIViewController {
             answerResult.text = "Sorry, wrong answer!"
         }
         
+        buttonsAfterSelected()
+        
+        
+//        for button in answerButtons {
+//            button.backgroundColor = UIColor.
+//    
+//        }
+        
         loadNextRoundWithDelay(seconds: 2)
     }
     
-    /*
-     'correctAnswer' holds the string value of the answer to the question
-     check to see if the sender has a title that matches the answer
-     */
+    // disables buttons when one is selected
+//    func disableButtons() {
+//        for button in answerButtons{
+//        }
+//    }
     
     func nextRound() {
         if questionsAsked == questionsPerRound {
@@ -147,6 +198,7 @@ class ViewController: UIViewController {
         nextRound()
     }
     
+    
 
     
     // MARK: Helper Methods
@@ -172,5 +224,29 @@ class ViewController: UIViewController {
     func playGameStartSound() {
         AudioServicesPlaySystemSound(gameSound)
     }
-}
+    
+    }
+
+
+
+
+
+/*
+ Button Design:
+ 
+    rounded corners
+    .normal state = regular
+    .disabled
+ 
+ */
+
+
+
+
+
+
+
+
+
+
 
