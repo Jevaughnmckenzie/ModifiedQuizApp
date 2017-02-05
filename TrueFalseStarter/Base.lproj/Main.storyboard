@@ -22,17 +22,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Intersectionality Quiz!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="got-2z-L4m">
-                                <rect key="frame" x="91" y="53" width="193" height="65"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Intersectionality Quiz!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="got-2z-L4m">
+                                <rect key="frame" x="91" y="53" width="193" height="52.5"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="22"/>
                                 <color key="textColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" axis="vertical" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="JgN-dY-ySs">
-                                <rect key="frame" x="36" y="303" width="303" height="144"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="JgN-dY-ySs">
+                                <rect key="frame" x="36" y="261" width="303" height="144"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qii-0m-qt4">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qii-0m-qt4">
                                         <rect key="frame" x="0.0" y="0.0" width="303" height="60"/>
                                         <color key="backgroundColor" red="0.0" green="0.59999999999999998" blue="0.0012932263584254796" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
@@ -45,7 +44,7 @@
                                             <segue destination="BYZ-38-t0r" kind="show" id="GBc-4T-STo"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DuD-6Q-mEj">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DuD-6Q-mEj">
                                         <rect key="frame" x="0.0" y="84" width="303" height="60"/>
                                         <color key="backgroundColor" red="0.0" green="0.59999999999999998" blue="0.0012932263580000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
@@ -54,9 +53,6 @@
                                         <state key="normal" title="Lightning Mode">
                                             <color key="titleColor" red="1" green="1" blue="0.0012932263580000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
-                                        <connections>
-                                            <segue destination="LhU-Tn-sNk" kind="show" id="adC-1J-pUb"/>
-                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -64,7 +60,11 @@
                         <color key="backgroundColor" red="0.62745098039215685" green="0.050980392156862744" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="JgN-dY-ySs" firstAttribute="leading" secondItem="dKK-dI-Qtm" secondAttribute="leadingMargin" constant="20" id="5Wq-mX-oK3"/>
+                            <constraint firstItem="JgN-dY-ySs" firstAttribute="top" secondItem="got-2z-L4m" secondAttribute="bottom" constant="155.5" id="AgU-mV-Eum"/>
+                            <constraint firstItem="got-2z-L4m" firstAttribute="leading" secondItem="dKK-dI-Qtm" secondAttribute="leadingMargin" constant="75" id="Bkn-4D-ekp"/>
                             <constraint firstAttribute="trailingMargin" secondItem="JgN-dY-ySs" secondAttribute="trailing" constant="20" id="Cq5-6Q-9nz"/>
+                            <constraint firstItem="got-2z-L4m" firstAttribute="top" secondItem="faz-Op-xEA" secondAttribute="bottom" constant="33" id="S4b-GA-rPe"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="got-2z-L4m" secondAttribute="trailing" constant="75" id="Zdl-rD-kjp"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -229,7 +229,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1455" y="-24"/>
+            <point key="canvasLocation" x="1168" y="-26"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="T8d-pG-rF4">
